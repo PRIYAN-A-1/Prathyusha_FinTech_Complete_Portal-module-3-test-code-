@@ -1,0 +1,1634 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Prathyusha Student Module API",
+    "version": "1.0.0",
+    "description": "Endpoint inventory. API.md defines request bodies, version requirements, auth routes and workflow examples."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/me/access": {
+      "get": {
+        "summary": "GET /me/access",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/profile": {
+      "get": {
+        "summary": "GET /me/profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "summary": "PUT /me/profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/profile/public-preview": {
+      "get": {
+        "summary": "GET /me/profile/public-preview",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/corrections": {
+      "post": {
+        "summary": "POST /me/corrections",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "summary": "GET /me/corrections",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects": {
+      "get": {
+        "summary": "GET /projects",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "summary": "POST /projects",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{id}": {
+      "get": {
+        "summary": "GET /projects/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "summary": "PUT /projects/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{id}/members/{userId}": {
+      "put": {
+        "summary": "PUT /projects/{id}/members/{userId}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{id}/milestones": {
+      "post": {
+        "summary": "POST /projects/{id}/milestones",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{id}/milestones/{milestoneId}": {
+      "patch": {
+        "summary": "PATCH /projects/{id}/milestones/{milestoneId}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "milestoneId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/projects/{id}/tasks": {
+      "get": {
+        "summary": "GET /projects/{id}/tasks",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "summary": "POST /projects/{id}/tasks",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/tasks": {
+      "get": {
+        "summary": "GET /me/tasks",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/tasks/{id}/status": {
+      "patch": {
+        "summary": "PATCH /tasks/{id}/status",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/contributions": {
+      "get": {
+        "summary": "GET /me/contributions",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/contributions": {
+      "post": {
+        "summary": "POST /contributions",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/contributions/{id}": {
+      "get": {
+        "summary": "GET /contributions/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "summary": "PUT /contributions/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/contributions/{id}/submit": {
+      "post": {
+        "summary": "POST /contributions/{id}/submit",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/contributions/{id}/review": {
+      "post": {
+        "summary": "POST /contributions/{id}/review",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/activity-summary": {
+      "get": {
+        "summary": "GET /me/activity-summary",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/activity-summary/export": {
+      "get": {
+        "summary": "GET /me/activity-summary/export",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/activity": {
+      "get": {
+        "summary": "GET /me/activity",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/dashboard": {
+      "get": {
+        "summary": "GET /me/dashboard",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/notifications": {
+      "get": {
+        "summary": "GET /me/notifications",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/notifications/{id}/read": {
+      "patch": {
+        "summary": "PATCH /me/notifications/{id}/read",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/me/profile/photo": {
+      "post": {
+        "summary": "POST /me/profile/photo",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/contributions/{id}/files": {
+      "post": {
+        "summary": "POST /contributions/{id}/files",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/files/{id}": {
+      "get": {
+        "summary": "GET /files/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/profiles": {
+      "get": {
+        "summary": "GET /admin/profiles",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/profiles/{id}": {
+      "get": {
+        "summary": "GET /admin/profiles/{id}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/corrections": {
+      "get": {
+        "summary": "GET /admin/corrections",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/corrections/{id}/review": {
+      "post": {
+        "summary": "POST /admin/corrections/{id}/review",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/profiles/{id}/publication": {
+      "post": {
+        "summary": "POST /admin/profiles/{id}/publication",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/projects/{id}/review": {
+      "post": {
+        "summary": "POST /admin/projects/{id}/review",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "If-Match",
+            "description": "Numeric version for versioned record writes (see API.md for per-route requirement).",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/admin/integrations/activities/{source}/{externalId}": {
+      "put": {
+        "summary": "PUT /admin/integrations/activities/{source}/{externalId}",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "source",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "path",
+            "name": "externalId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success; data envelope"
+          },
+          "201": {
+            "description": "Created for create/upload operations"
+          },
+          "401": {
+            "description": "Invalid session"
+          },
+          "403": {
+            "description": "Insufficient permissions"
+          },
+          "409": {
+            "description": "Duplicate/stale version/invalid transition"
+          },
+          "422": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/api/v1/public/profiles/{id}": {
+      "get": {
+        "summary": "Published consented public profile",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Public fields only"
+          },
+          "404": {
+            "description": "Not published"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Sign in using approved account",
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string",
+                    "format": "password"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Current session identity",
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Revoke session",
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/auth/logout-all": {
+      "post": {
+        "summary": "Revoke all user sessions",
+        "servers": [
+          {
+            "url": "http://localhost:8080"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Authentication failed"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/v1/reviews/contributions": {
+      "get": {
+        "summary": "Contribution review queue (assigned mentor or admin)",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated pending review records"
+          },
+          "403": {
+            "description": "Review permission required"
+          }
+        }
+      }
+    }
+  }
+}

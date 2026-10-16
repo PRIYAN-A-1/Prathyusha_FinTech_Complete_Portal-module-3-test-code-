@@ -1,0 +1,10 @@
+**/node_modules
+**/target
+.env
+**/private-uploads
+.git
+
+**/dist
+**/*.tsbuildinfo
+
+runtime/

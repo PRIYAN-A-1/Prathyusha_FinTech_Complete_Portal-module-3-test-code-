@@ -1,0 +1,11 @@
+FROM node:24-bookworm-slim
+WORKDIR /app/api
+COPY api/package*.json ./
+RUN npm ci --omit=dev
+COPY api/src ./src
+COPY db /app/db
+RUN mkdir /app/private-uploads && chown node:node /app/private-uploads
+USER node
+ENV PORT=4000 UPLOAD_DIR=/app/private-uploads
+EXPOSE 4000
+CMD ["node","src/server.js"]
