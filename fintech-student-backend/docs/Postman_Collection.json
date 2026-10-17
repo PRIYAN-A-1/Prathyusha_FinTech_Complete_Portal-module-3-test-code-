@@ -1,0 +1,229 @@
+{
+  "info": {
+    "name": "Prathyusha Student Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "api",
+      "value": "http://localhost:3001"
+    },
+    {
+      "key": "auth",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "email",
+      "value": ""
+    },
+    {
+      "key": "password",
+      "value": ""
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "project_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "url": "{{auth}}/auth/login",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}"
+        },
+        "auth": {
+          "type": "noauth"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) pm.collectionVariables.set('token', pm.response.json().access_token);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "My profile",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/me",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Update profile",
+      "request": {
+        "method": "PATCH",
+        "url": "{{api}}/api/me/profile",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"display_name\": \"Priyan\",\n  \"skills\": [\n    \"Node.js\",\n    \"PostgreSQL\"\n  ],\n  \"public_visible\": false\n}"
+        }
+      }
+    },
+    {
+      "name": "Dashboard",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/me/dashboard",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Activity summary",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/me/activity-summary",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "My projects",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/projects",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Project detail",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/projects/{{project_id}}",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Propose project",
+      "request": {
+        "method": "POST",
+        "url": "{{api}}/api/projects",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"FinTech project\",\n  \"domain\": \"Financial technology\",\n  \"abstract\": \"Student innovation project\",\n  \"problem_statement\": \"Record meaningful work\",\n  \"objectives\": \"Build and verify\",\n  \"expected_outcome\": \"Working prototype\",\n  \"start_date\": \"2026-10-17\",\n  \"target_date\": \"2026-12-01\",\n  \"technology_stack\": [\n    \"Node.js\",\n    \"PostgreSQL\"\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "My contributions",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/me/contributions",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Submit contribution",
+      "request": {
+        "method": "POST",
+        "url": "{{api}}/api/me/contributions",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"project_id\": \"{{project_id}}\",\n  \"contribution_date\": \"2026-10-17\",\n  \"work_area\": \"Coding\",\n  \"description\": \"Implemented student API\",\n  \"outcome\": \"Working validated routes\",\n  \"evidence_url\": \"https://github.com/PRIYAN-A-1\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Notifications",
+      "request": {
+        "method": "GET",
+        "url": "{{api}}/api/me/notifications",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "url": "{{auth}}/auth/logout",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ]
+      }
+    }
+  ]
+}

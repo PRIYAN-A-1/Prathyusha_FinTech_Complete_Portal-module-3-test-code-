@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {fields,str,url,date,uuid,list,paging,fileType} from '../src/validation.js';
+test('protected fields cannot be mass assigned',()=>{for(const key of ['role','membership_status','publication_approved','user_id'])assert.throws(()=>fields({[key]:'ADMIN'},['display_name']));});
+test('URLs reject script execution and credentials',()=>{for(const v of ['javascript:alert(1)','file:///etc/passwd','https://user:password@example.com','invalid'])assert.throws(()=>url(v));assert.equal(url('https://github.com/PRIYAN-A-1'),'https://github.com/PRIYAN-A-1');});
+test('date validation rejects rollover and impossible dates',()=>{for(const v of ['2026-02-30','2026-13-01','yesterday',null])assert.throws(()=>date(v));assert.equal(date('2024-02-29'),'2024-02-29');});
+test('pagination rejects negative, unbounded, fractional and SQL values',()=>{for(const q of ['limit=101','offset=-1','limit=0','limit=1.5','offset=1%3BDROP+TABLE+users'])assert.throws(()=>paging(new URLSearchParams(q)));assert.deepEqual(paging(new URLSearchParams()),{limit:20,offset:0});});
+test('UUID parsing excludes injected SQL',()=>{assert.throws(()=>uuid("' OR 1=1 --"));assert.equal(uuid('11111111-1111-4111-8111-111111111111'),'11111111-1111-4111-8111-111111111111');});
+test('evidence signatures reject executables and HTML',()=>{assert.throws(()=>fileType(Buffer.from('<html>')));assert.throws(()=>fileType(Buffer.from('MZ executable')));assert.equal(fileType(Buffer.from('%PDF-1.7\n')),'application/pdf');assert.equal(fileType(Buffer.from([137,80,78,71,13,10,26,10])),'image/png');});
+test('arrays and text enforce bounds',()=>{assert.throws(()=>list(Array(31).fill('x')));assert.throws(()=>str('x'.repeat(2001)));assert.deepEqual(list(['JS','JS','Java']),['JS','Java']);assert.throws(()=>fields([],[]));});

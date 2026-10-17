@@ -1,0 +1,10 @@
+export class HttpError extends Error { constructor(status,message){super(message);this.status=status;} }
+export function check(ok,message,status=400){if(!ok)throw new HttpError(status,message);}
+export function fields(body,allowed,required=[]){check(body && typeof body==='object' && !Array.isArray(body),'JSON object required');check(Object.keys(body).every(k=>allowed.includes(k)),'Unknown or protected field');for(const k of required)check(typeof body[k]==='string'&&body[k].trim().length>0,`${k} is required`);return body;}
+export function str(v,max=2000){check(typeof v==='string'&&v.trim().length>0&&v.length<=max,'Invalid text');return v.trim();}
+export function url(v){if(v===null||v==='')return null;check(typeof v==='string'&&v.length<=2048,'Invalid URL');let u;try{u=new URL(v);}catch{throw new HttpError(400,'Invalid URL');}check(['https:','http:'].includes(u.protocol)&&!u.username&&!u.password,'Only HTTP(S) URLs allowed');return u.href;}
+export function date(v){check(typeof v==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(v)&&!Number.isNaN(Date.parse(v))&&new Date(v).toISOString().slice(0,10)===v,'Invalid date');return v;}
+export function uuid(v){check(typeof v==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v),'Invalid UUID');return v;}
+export function list(v){check(Array.isArray(v)&&v.length<=30,'Expected at most 30 values');return [...new Set(v.map(x=>str(x,80)))];}
+export function paging(params){const limit=Number(params.get('limit')??20),offset=Number(params.get('offset')??0);check(Number.isInteger(limit)&&limit>=1&&limit<=100&&Number.isInteger(offset)&&offset>=0&&offset<=100000,'Invalid pagination');return {limit,offset};}
+export function fileType(buffer){if(buffer.subarray(0,5).toString()==='%PDF-')return 'application/pdf';if(buffer.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])))return 'image/png';if(buffer[0]===255&&buffer[1]===216&&buffer[2]===255)return 'image/jpeg';throw new HttpError(400,'Only PDF, PNG and JPEG files are allowed');}
