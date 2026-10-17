@@ -107,13 +107,25 @@ if (!$dbExists) {
     & $javaCmd -jar "$projectRoot\auth\target\fintech-auth-1.0.0.jar" --spring.profiles.active=provision
 }
 
-# 5. Start Backend Services
+# 5. Start Backend & Frontend Services
 Write-Host "`n==> Starting Auth Service on port 8080..." -ForegroundColor Cyan
 $jarPath = Join-Path $projectRoot 'auth/target/fintech-auth-1.0.0.jar'
 $authProcess = Start-Process $javaCmd -ArgumentList @('-jar', ('"' + $jarPath + '"')) -WorkingDirectory $projectRoot -NoNewWindow -PassThru
 
+$frontendPath = Join-Path $projectRoot 'frontend'
+$frontendProcess = $null
+if (Test-Path $frontendPath) {
+    Write-Host "==> Starting React Frontend on http://localhost:5173..." -ForegroundColor Cyan
+    $frontendProcess = Start-Process npm -ArgumentList @('run', 'dev') -WorkingDirectory $frontendPath -PassThru
+}
+
 try {
     Write-Host "==> Starting Student API on port 3001..." -ForegroundColor Cyan
+    Write-Host "`n===============================================" -ForegroundColor Green
+    Write-Host "  FinTech Portal Web App: http://localhost:5173" -ForegroundColor Yellow
+    Write-Host "  Student API:            http://localhost:3001" -ForegroundColor Yellow
+    Write-Host "  Auth Service:           http://localhost:8080" -ForegroundColor Yellow
+    Write-Host "===============================================`n" -ForegroundColor Green
     Push-Location (Join-Path $projectRoot 'api')
     node src/server.js
 } finally {
@@ -121,5 +133,9 @@ try {
     if ($authProcess -and !$authProcess.HasExited) {
         Write-Host "==> Stopping Auth Service..." -ForegroundColor Yellow
         Stop-Process -Id $authProcess.Id -Force
+    }
+    if ($frontendProcess -and !$frontendProcess.HasExited) {
+        Write-Host "==> Stopping Frontend..." -ForegroundColor Yellow
+        Stop-Process -Id $frontendProcess.Id -Force
     }
 }
